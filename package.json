@@ -1,6 +1,6 @@
 {
-  "name": "@codmucker/npm-dry",
-  "version": "0.7.0",
+  "name": "@codemucker/npm-dry",
+  "version": "0.0.1",
   "description": "Use npm across multiple projects without repeating yourself",
   "main": "dist/index.js",
   "bin": {
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codemucker/dry-dry.git"
+    "url": "https://github.com/codemucker/npm-dry.git"
   },
   "keywords": [
     "npm",

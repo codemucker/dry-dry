@@ -4,10 +4,14 @@
 
 # DRY - Use npm across multiple projects without repeating yourself
 
+### Acknowledgements
+
+Fork of https://github.com/Cosium/dry-dry 
+
 ### Get it
 
 ```bash
-$ npm i -g dry-dry
+$ npm i -g @codemucker/npm-dry
 ```
 
 ### Use it
