@@ -10,6 +10,7 @@
     "src",
     "dist"
   ],
+  "private":false,
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "test": "mocha -r ts-node/register src/**/*.test.ts",
