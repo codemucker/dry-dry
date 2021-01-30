@@ -78,12 +78,12 @@ export abstract class DryStep {
      */
     public exec(context: DryContext): Promise<DryContext> {
         if (this.isActive()) {
-            DryStep.stepLogger.info(
+            DryStep.stepLogger.debug(
                 `${DryLifecyclePhase[this.phase]} (order: ${this.orderInPhase}) : Executing step ${this.constructor.name}`,
             );
             return this.execute(context);
         } else {
-            DryStep.stepLogger.info(
+            DryStep.stepLogger.debug(
                 `${DryLifecyclePhase[this.phase]} (order: ${this.orderInPhase}) : Skipping step ${this.constructor.name}`,
             );
             return Promise.resolve(context);

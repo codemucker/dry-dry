@@ -38,7 +38,7 @@ export class DryPackagerDescriptor {
     constructor() {}
 
     public static resolveDescriptor(cwd: string, file: string): string {
-        const customPackagerPath: string = path.resolve(path.join(cwd, file));
+        const customPackagerPath: string = path.isAbsolute(file) ? path.resolve(file) : path.resolve(path.join(cwd, file));
         const dryPackagerPath: string = path.resolve(`${__dirname}/${DryPackagerDescriptor.PACKAGER_TEMPLATES_PATH}/${file}.json`);
 
         if (fs.existsSync(customPackagerPath)) {
@@ -48,7 +48,7 @@ export class DryPackagerDescriptor {
             // a json packager key is provided
             return dryPackagerPath;
         } else {
-            throw new Error(`Unable to load any packager descriptor! Invalid key or path ${file}`);
+            throw new Error(`Unable to load any packager descriptor! Invalid key or path '${file}'. Tried [${[customPackagerPath,dryPackagerPath].join(',')}]`);
         }
     }
 
