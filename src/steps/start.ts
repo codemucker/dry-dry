@@ -11,7 +11,7 @@ export class Start extends DryStep {
     /** @inheritdoc */
     public execute(context: DryContext): Promise<DryContext> {
         return new Promise<DryContext>((resolve, reject) => {
-            Start.logger.info('Dry lifecycle started');
+            Start.logger.debug('Dry lifecycle started');
             resolve(context);
         });
     }

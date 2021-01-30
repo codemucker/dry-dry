@@ -74,7 +74,7 @@ export abstract class DryFeature extends DryStep {
         this.activeTrigger = dryOption;
         this.active = true;
 
-        DryFeature.featureLogger.info(
+        DryFeature.featureLogger.debug(
             `${DryLifecyclePhase[this.phase]} (order: ${this.orderInPhase}) : Feature is now active ${this.constructor.name}`,
         );
         return this.argumentValue;

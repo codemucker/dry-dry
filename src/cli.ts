@@ -1,6 +1,6 @@
 import * as childProcess from 'child_process';
-import Process = NodeJS.Process;
 import { Logger } from './logger';
+import Process = NodeJS.Process;
 
 /**
  * The command line interface.
@@ -29,7 +29,7 @@ export class Cli {
      */
     public execute(commandLine: string, finallyFunc?: () => void): Promise<void> {
         return new Promise((resolve, reject) => {
-            Cli.logger.info(`Spawning process with command ${commandLine}`);
+            Cli.logger.debug(`Spawning process with command ${commandLine}`);
             const child = childProcess.spawn(commandLine, [], { env: this.process.env, shell: true, stdio: 'inherit' });
             child.on('error', (err) => {
                 if (finallyFunc !== undefined) {

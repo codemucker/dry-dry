@@ -18,7 +18,7 @@ export class DryCommandExecutor {
      * @return {Promise<void>} Resolved promise on success, rejected promise on failure.
      */
     public execute(): Promise<DryContext> {
-        DryCommandExecutor.logger.info('Dry command execution started');
+        DryCommandExecutor.logger.debug('Dry command execution started');
         const cfg: DryCommandConfig = this.dryContext.getDryCommandConfig();
 
         this.dryContext.setExecutionSteps(cfg.getOrderedStepsAndFeatures());

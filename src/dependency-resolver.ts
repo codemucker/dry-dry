@@ -26,7 +26,7 @@ export class DependencyResolver {
     public resolve(dependencies: DryDependencies): Promise<void> {
         const args: string[] = [];
 
-        DependencyResolver.logger.info('Resolving dependencies...');
+        DependencyResolver.logger.debug('Resolving dependencies...');
 
         Object.keys(dependencies).forEach((dependencyName) => {
             const dependencyVersion = dependencies[dependencyName];
@@ -43,7 +43,7 @@ export class DependencyResolver {
             }
         });
         if (args.length === 0) {
-            DependencyResolver.logger.info('Nothing to resolve!');
+            DependencyResolver.logger.debug('Nothing to resolve!');
             return Promise.resolve();
         }
 

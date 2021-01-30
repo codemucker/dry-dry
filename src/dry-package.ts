@@ -46,7 +46,7 @@ export class DryPackage {
     public applyDiff(oldContent: WeakDryPackageContent, newContent: WeakDryPackageContent): void {
         const diffs = deepDiff.diff(oldContent, newContent);
         if (!diffs) {
-            DryPackage.logger.info(`No difference found, file ${this.location} is up to date`);
+            DryPackage.logger.debug(`No difference found, file ${this.location} is up to date`);
             return;
         }
         DryPackage.logger.debug(`Applying difference and saving to ${this.location}`);
@@ -63,7 +63,7 @@ export class DryPackage {
      * @return {Promise<NpmPackage>} The NpmPackage
      */
     public buildNpmPackage(): Promise<NpmPackage> {
-        DryPackage.logger.info(`Building npm package`);
+        DryPackage.logger.debug(`Building npm package`);
         return this.doBuildNpmPackage();
     }
 
@@ -133,19 +133,19 @@ export class DryPackage {
     private resolveManagedDependencies(): void {
         const dependencyMgmt = this._content.dependencyManagement;
 
-        DryPackage.logger.info(`Resolving version of "managed" dependencies...`);
+        DryPackage.logger.debug(`Resolving version of "managed" dependencies...`);
         this.resolveManaged(this._content.dependencies, dependencyMgmt);
 
-        DryPackage.logger.info(`Resolving version of "managed" devDependencies...`);
+        DryPackage.logger.debug(`Resolving version of "managed" devDependencies...`);
         this.resolveManaged(this._content.devDependencies, dependencyMgmt);
 
-        DryPackage.logger.info(`Resolving version of "managed" peerDependencies...`);
+        DryPackage.logger.debug(`Resolving version of "managed" peerDependencies...`);
         this.resolveManaged(this._content.peerDependencies, dependencyMgmt);
 
-        DryPackage.logger.info(`Resolving version of "managed" optionalDependencies...`);
+        DryPackage.logger.debug(`Resolving version of "managed" optionalDependencies...`);
         this.resolveManaged(this._content.optionalDependencies, dependencyMgmt);
 
-        DryPackage.logger.info(`Resolving version of "managed" bundledDependencies...`);
+        DryPackage.logger.debug(`Resolving version of "managed" bundledDependencies...`);
         this.resolveManaged(this._content.bundledDependencies, dependencyMgmt);
     }
 
@@ -158,7 +158,7 @@ export class DryPackage {
      */
     private resolveManaged(dependencies: { [s: string]: string }, dependencyManagement: { [s: string]: string }): void {
         if (!dependencies || !dependencyManagement) {
-            DryPackage.logger.info(`Nothing to resolve, continue...`);
+            DryPackage.logger.debug(`Nothing to resolve, continue...`);
             return;
         }
 

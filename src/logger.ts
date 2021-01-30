@@ -32,34 +32,46 @@ export class Logger {
         return new Logger(namespace);
     }
 
+    private logPrefix(){
+        const d = new Date()
+        const formatNum = (num:number) => {
+            if(num < 10){
+                return '0' + num
+            }
+            return num
+        }
+        return `npm-dry ${formatNum(d.getHours())}${formatNum(d.getMinutes())}:${formatNum(d.getSeconds())}`
+
+    }
+
     // tslint:disable-next-line: no-any
     public trace(...msg: any[]): void {
         this.innerLogger.setLevel(Logger.lvl);
-        this.innerLogger.trace(chalk.default.dim(`${new Date()} [TRACE]: ${msg}`));
+        this.innerLogger.trace(chalk.default.dim(`${this.logPrefix} [TRACE]: ${msg}`));
     }
 
     // tslint:disable-next-line: no-any
     public debug(...msg: any[]): void {
         this.innerLogger.setLevel(Logger.lvl);
-        this.innerLogger.debug(chalk.default.cyan(`${new Date()} [DEBUG]: ${msg}`));
+        this.innerLogger.debug(chalk.default.cyan(`${this.logPrefix} [DEBUG]: ${msg}`));
     }
 
     // tslint:disable-next-line: no-any
     public info(...msg: any[]): void {
         this.innerLogger.setLevel(Logger.lvl);
-        this.innerLogger.info(chalk.default.blue(`${new Date()} [INFO]: ${msg}`));
+        this.innerLogger.info(chalk.default.blue(`${this.logPrefix} [INFO]: ${msg}`));
     }
 
     // tslint:disable-next-line: no-any
     public warn(...msg: any[]): void {
         this.innerLogger.setLevel(Logger.lvl);
-        this.innerLogger.warn(chalk.default.yellow(`${new Date()} [WARN]: ${msg}`));
+        this.innerLogger.warn(chalk.default.yellow(`${this.logPrefix} [WARN]: ${msg}`));
     }
 
     // tslint:disable-next-line: no-any
     public error(...msg: any[]): void {
         this.innerLogger.setLevel(Logger.lvl);
-        this.innerLogger.error(chalk.default.red(`${new Date()} [ERROR]: ${msg}`));
+        this.innerLogger.error(chalk.default.red(`${this.logPrefix} [ERROR]: ${msg}`));
     }
 
     public isTraceEnabled(): boolean {

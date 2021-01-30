@@ -16,7 +16,9 @@
     "test": "mocha -r ts-node/register src/**/*.test.ts",
     "lint": "tslint -p .",
     "style": "prettier -l \"src/**/*.ts\"",
-    "release": "npm run build && npm test && npm version minor && git push && git push --tags && npm publish --access public"
+    "release": "npm run release:patch",
+    "release:patch": "npm run build && npm test && npm version patch && git push && git push --tags && npm publish --access public",
+    "release:minor": "npm run build && npm test && npm version minor && git push && git push --tags && npm publish --access public"    
   },
   "repository": {
     "type": "git",
