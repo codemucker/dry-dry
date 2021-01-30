@@ -1,6 +1,6 @@
 {
   "name": "@codemucker/npm-dry",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Use npm across multiple projects without repeating yourself",
   "main": "dist/index.js",
   "bin": {
