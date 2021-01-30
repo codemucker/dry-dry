@@ -32,7 +32,7 @@ export class Logger {
         return new Logger(namespace);
     }
 
-    private logPrefix(){
+    private get logPrefix(){
         const d = new Date()
         const formatNum = (num:number) => {
             if(num < 10){

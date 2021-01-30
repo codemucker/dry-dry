@@ -18,7 +18,8 @@
     "style": "prettier -l \"src/**/*.ts\"",
     "release": "npm run release:patch",
     "release:patch": "npm run build && npm test && npm version patch && git push && git push --tags && npm publish --access public",
-    "release:minor": "npm run build && npm test && npm version minor && git push && git push --tags && npm publish --access public"
+    "release:minor": "npm run build && npm test && npm version minor && git push && git push --tags && npm publish --access public",
+    "release:replace": "npm run build && npm test && git push && git push --tags && npm publish --access public"
   },
   "repository": {
     "type": "git",
